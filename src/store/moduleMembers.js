@@ -7,6 +7,9 @@ export const moduleMembers = {
     }
   },
   mutations: {
+    membersRead(state, members) {
+      state.members = members
+    }
   },
   actions: {
     membersCreate(thisStore) {
@@ -16,6 +19,17 @@ export const moduleMembers = {
         age: thisStore.state.member.age
       })
       console.log('Done membersCreate', moduleMembers.state.members)
+    },
+    membersRead(thisStore) {
+      const members = [{
+        name: '홍길동',
+        age: 20
+      }, {
+        name: '춘향이',
+        age: 16
+      }]
+      thisStore.commit('membersRead', members)
+      console.log('Done membersRead', moduleMembers.state.members)
     }
   }
 }
