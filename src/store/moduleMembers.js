@@ -30,6 +30,11 @@ export const moduleMembers = {
       }]
       thisStore.commit('membersRead', members)
       console.log('Done membersRead', moduleMembers.state.members)
+    },
+    membersUpdate(thisStore, memberUpdate) {
+      debugger
+      thisStore.state.members[memberUpdate.index] = memberUpdate.member
+      console.log('Done membersUpdate', moduleMembers.state.members)
     }
   }
 }

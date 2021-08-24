@@ -14,10 +14,10 @@
         </thead>
         <tbody>
           <tr v-for="(member, index) in members" :key="index">
-            <td>{{member.name}}</td>
-            <td>{{member.age}}</td>
+            <td><input type="text" placeholder="Name" v-model="member.name" /></td>
+            <td><input type="text" placeholder="Age" v-model="member.age" /></td>
             <td>
-              <button>Update</button>
+              <button @click="membersUpdate(index, member)">Update</button>
               <button>Delete</button>
             </td>
           </tr>
@@ -48,6 +48,12 @@ export default {
   methods: {
     membersCreate() {
       this.$store.dispatch('membersCreate')
+    },
+    membersUpdate(index, member) {
+      this.$store.dispatch('membersUpdate', {
+        index: index,
+        member: member
+      })
     }
   },
   created() {
