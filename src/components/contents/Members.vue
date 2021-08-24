@@ -38,6 +38,7 @@
 export default {
   computed: {
     member() {
+      // debugger
       return this.$store.state.$members.member
     }
   },
@@ -47,6 +48,8 @@ export default {
     }
   },
   created() {
+    console.log (this)
+    // debugger
     this.member.name = ''
     this.member.age = ''
   }

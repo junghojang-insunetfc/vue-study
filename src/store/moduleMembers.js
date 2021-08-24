@@ -10,6 +10,7 @@ export const moduleMembers = {
   },
   actions: {
     membersCreate(thisStore) {
+      // debugger
       thisStore.state.members.push({
         name: thisStore.state.member.name,
         age: thisStore.state.member.age
