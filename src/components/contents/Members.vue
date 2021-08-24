@@ -18,7 +18,7 @@
             <td><input type="text" placeholder="Age" v-model="member.age" /></td>
             <td>
               <button @click="membersUpdate(index, member)">Update</button>
-              <button>Delete</button>
+              <button @click="membersDelete(index)">Delete</button>
             </td>
           </tr>
         </tbody>
@@ -54,6 +54,9 @@ export default {
         index: index,
         member: member
       })
+    },
+    membersDelete(index) {
+      this.$store.dispatch('membersDelete', index)
     }
   },
   created() {

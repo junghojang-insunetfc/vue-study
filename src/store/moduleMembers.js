@@ -35,6 +35,11 @@ export const moduleMembers = {
       debugger
       thisStore.state.members[memberUpdate.index] = memberUpdate.member
       console.log('Done membersUpdate', moduleMembers.state.members)
+    },
+    membersDelete(thisStore, index) {
+      debugger
+      thisStore.state.members.splice(index, 1)
+      console.log('Done membersDelete', moduleMembers.state.members)
     }
   }
 }
