@@ -23,7 +23,6 @@ export const moduleMembers = {
       })
     },
     membersRead(thisStore) {
-      debugger
       axios.get('http://localhost:3100/api/v1/members').then(function(response) {
         console.log('Done membersRead', response)
         thisStore.commit('membersRead', response.data.members)
@@ -33,8 +32,12 @@ export const moduleMembers = {
     },
     membersUpdate(thisStore, memberUpdate) {
       debugger
-      thisStore.state.members[memberUpdate.index] = memberUpdate.member
-      console.log('Done membersUpdate', moduleMembers.state.members)
+      axios.patch('http://localhost:3100/api/v1/members', memberUpdate).then(function(response) {
+        console.log('Done membersUpdate', response)
+        thisStore.dispatch('membersRead')
+      }).catch(function(error) {
+        thisStore.dispatch('axiosError', error)
+      })
     },
     membersDelete(thisStore, index) {
       debugger
