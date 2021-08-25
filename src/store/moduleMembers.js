@@ -41,8 +41,12 @@ export const moduleMembers = {
     },
     membersDelete(thisStore, index) {
       debugger
-      thisStore.state.members.splice(index, 1)
-      console.log('Done membersDelete', moduleMembers.state.members)
+      axios.delete('http://localhost:3100/api/v1/members/' + index).then(function(response) {
+        console.log('Done membersDelete', response)
+        thisStore.dispatch('membersRead')
+      }).catch(function(error) {
+        thisStore.dispatch('axiosError', error)
+      })
     }
   }
 }
