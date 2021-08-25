@@ -10,6 +10,10 @@ export default new Vuex.Store({
   mutations: {
   },
   actions: {
+    axiosError(thisStore, error) {
+      debugger
+      console.error(error.response || error.message || error)
+    }
   },
   modules: {
     $members: moduleMembers
